@@ -1,0 +1,29 @@
+### get employees
+GET http://localhost:3000/api/quotation
+
+###
+POST http://localhost:3000/api/quotation
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "salary": 1000
+}
+
+### Get employee by id
+GET http://localhost:3000/api/quotation/2
+
+### Update an employee
+PATCH http://localhost:3000/api/quotation/2
+Content-Type: application/json
+
+[
+  {
+    "id": 1,
+    "service": "terrestre",
+    "mode": "exportacion",
+    "cargoType": "peligrosa",
+    "origin": "xx",
+    "destination": "xx"
+  }
+]
