@@ -44,7 +44,17 @@ export const deleteEmployee = async (req, res) => {
 
 export const createEmployee = async (req, res) => {
   try {
-    const { service, mode, cargoType, origin, destination } = req.body;
+    // Convertir el objeto req.body a JSON
+    const requestBody = JSON.parse(JSON.stringify(req.body));
+
+    // Verificar si el objeto requestBody está vacío
+    if (Object.keys(requestBody).length === 0) {
+      return res.status(400).json({ message: 'El objeto requestBody está vacío' });
+    }
+
+    const { service, mode, cargoType, origin, destination } = requestBody;
+
+    console.log(requestBody)
 
     // Ejecutar la consulta SQL utilizando el pool de conexiones
     const [result] = await pool.execute(
@@ -63,6 +73,8 @@ export const createEmployee = async (req, res) => {
     return res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
+
+
 
 
 
