@@ -9,7 +9,7 @@ const app = express();
 
 // Configuración de CORS
 const corsOptions = {
-  origin: 'https://eccargo-julianv-web-front-production.up.railway.app',
+  origin: 'http://localhost:3001',
   optionsSuccessStatus: 200 // Algunos navegadores antiguos (IE11, varios SmartTVs) se bloquean con 204
 }
 
