@@ -81,7 +81,11 @@ export const createEmployee = async (req, res) => {
 export const updateEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const { service, mode, cargoType, origin, destination } = req.body[0];
+    const { service, mode, cargoType, origin, destination } = req.body;
+
+console.log(id)
+console.log(req.body)
+
 
     const [result] = await pool.query(
       "UPDATE employees SET service = IFNULL(?, service), mode = IFNULL(?, mode), cargoType = IFNULL(?, cargoType), origin = IFNULL(?, origin), destination = IFNULL(?, destination) WHERE id = ?",
@@ -93,7 +97,7 @@ export const updateEmployee = async (req, res) => {
 
     const [rows] = await pool.query("SELECT * FROM employees WHERE id = ?", [id]);
 
-    res.json(rows[0]);
+    res.json(rows);
   } catch (error) {
     console.error("Error update quotation:", error);
     return res.status(500).json({ message: "Error interno del servidor" });
